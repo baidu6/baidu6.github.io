@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html class="full-height">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#Swift生成.framework静态库 ##步骤 1.打开Xcode，新建工程，名为TestTool，会自动生成TestTool.h文件。 2.创建一个名字为Hello类继承自NSObject。 3.在Hello中实现一个打印Hello World的方法。 4.更改参数将Build Active Architecture Only 设置为No  将Mach改成静态的 5.设置headers将要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/05/29/swift_framework/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#Swift生成.framework静态库 ##步骤 1.打开Xcode，新建工程，名为TestTool，会自动生成TestTool.h文件。 2.创建一个名字为Hello类继承自NSObject。 3.在Hello中实现一个打印Hello World的方法。 4.更改参数将Build Active Architecture Only 设置为No  将Mach改成静态的 5.设置headers将要">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/1.png">
+<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/2.png">
+<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/3.png">
+<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/4.png">
+<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/5.png">
+<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/6.png">
+<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/7.png">
+<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/8.png">
+<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/9.png">
+<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/10.png">
+<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/11.png">
+<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/12.png">
+<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/13.png">
+<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/14.png">
+<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/15.png">
+<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/16.png">
+<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/17.png">
+<meta property="og:updated_time" content="2018-05-29T06:46:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="#Swift生成.framework静态库 ##步骤 1.打开Xcode，新建工程，名为TestTool，会自动生成TestTool.h文件。 2.创建一个名字为Hello类继承自NSObject。 3.在Hello中实现一个打印Hello World的方法。 4.更改参数将Build Active Architecture Only 设置为No  将Mach改成静态的 5.设置headers将要">
+<meta name="twitter:image" content="http://yoursite.com/Users/wangyun/Desktop/1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+  
+
+</head>
+
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">三|木子</span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                Home
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                Home
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <!--博文页面-->
+
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
+        background-size: cover;
+        background-color: lightsteelblue;
+    }
+
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
+    }
+
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+
+    .flow-chart {
+        text-align: center;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
+    }
+</style>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>Null</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://avatars1.githubusercontent.com/u/13496742?s=400&u=26ebc2c14f55adba9905b07fb2d54ddb842cca8b&v=4">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> 三|木子</span>
+                <span class="post-date sub-title">at: 2018-05-29</span>
+            </div>
+            
+                <div>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <p>#Swift生成.framework静态库</p>
+<p>##步骤</p>
+<h3 id="1-打开Xcode，新建工程，名为TestTool，会自动生成TestTool-h文件。"><a href="#1-打开Xcode，新建工程，名为TestTool，会自动生成TestTool-h文件。" class="headerlink" title="1.打开Xcode，新建工程，名为TestTool，会自动生成TestTool.h文件。"></a>1.打开Xcode，新建工程，名为TestTool，会自动生成TestTool.h文件。</h3><p><img src="/Users/wangyun/Desktop/1.png" alt=""></p>
+<h3 id="2-创建一个名字为Hello类继承自NSObject。"><a href="#2-创建一个名字为Hello类继承自NSObject。" class="headerlink" title="2.创建一个名字为Hello类继承自NSObject。"></a>2.创建一个名字为Hello类继承自NSObject。</h3><p><img src="/Users/wangyun/Desktop/2.png" alt=""></p>
+<h3 id="3-在Hello中实现一个打印Hello-World的方法。"><a href="#3-在Hello中实现一个打印Hello-World的方法。" class="headerlink" title="3.在Hello中实现一个打印Hello World的方法。"></a>3.在Hello中实现一个打印Hello World的方法。</h3><p><img src="/Users/wangyun/Desktop/3.png" alt=""></p>
+<h3 id="4-更改参数"><a href="#4-更改参数" class="headerlink" title="4.更改参数"></a>4.更改参数</h3><p>将Build Active Architecture Only 设置为No</p>
+<p><img src="/Users/wangyun/Desktop/4.png" alt=""></p>
+<p>将Mach改成静态的<br><img src="/Users/wangyun/Desktop/5.png" alt=""></p>
+<h3 id="5-设置headers"><a href="#5-设置headers" class="headerlink" title="5.设置headers"></a>5.设置headers</h3><p>将要公开的头文件拖到public下，要隐藏的放在private或者project下。</p>
+<p><img src="/Users/wangyun/Desktop/6.png" alt=""></p>
+<p><img src="/Users/wangyun/Desktop/7.png" alt=""></p>
+<h3 id="6-打包framework"><a href="#6-打包framework" class="headerlink" title="6.打包framework"></a>6.打包framework</h3><h4 id="1-选中模拟器，编译程序；"><a href="#1-选中模拟器，编译程序；" class="headerlink" title="1.选中模拟器，编译程序；"></a>1.选中模拟器，编译程序；</h4><h4 id="2-选中测试机，编译程序；"><a href="#2-选中测试机，编译程序；" class="headerlink" title="2.选中测试机，编译程序；"></a>2.选中测试机，编译程序；</h4><h4 id="3-在finder中找到framework；"><a href="#3-在finder中找到framework；" class="headerlink" title="3.在finder中找到framework；"></a>3.在finder中找到framework；</h4><p><img src="/Users/wangyun/Desktop/8.png" alt=""></p>
+<p>这里会出现两个framework,一个Debug-iphoneod是真机下的，一个Debug-iphonesimulator是模拟器下的：<br><img src="/Users/wangyun/Desktop/9.png" alt=""></p>
+<p>现在要将这两个framework合并成一个，在真机和模拟器能够同时使用的framework。</p>
+<p>打开终端输入 lipo -create 模拟器下TestTool路径 真机下TestTool路径 -output 新的路径<br><img src="/Users/wangyun/Desktop/10.png" alt=""></p>
+<p><img src="/Users/wangyun/Desktop/11.png" alt=""></p>
+<p><img src="/Users/wangyun/Desktop/12.png" alt=""></p>
+<p>这里将合成后的文件放在了桌面上，就生成了一个后缀名为.lipo的文件，将后缀名去掉，替换之前真机中的TestTool文件；</p>
+<p><img src="/Users/wangyun/Desktop/13.png" alt=""></p>
+<p>替换之后，<br><img src="/Users/wangyun/Desktop/14.png" alt=""></p>
+<p>这个framework文件就是我们需要的，在真机和模拟器上都能使用的。</p>
+<h3 id="6-使用-framework"><a href="#6-使用-framework" class="headerlink" title="6.使用.framework"></a>6.使用.framework</h3><h4 id="1-新建一个项目"><a href="#1-新建一个项目" class="headerlink" title="1.新建一个项目"></a>1.新建一个项目</h4><p><img src="/Users/wangyun/Desktop/15.png" alt=""></p>
+<h4 id="2-将-framework文件拖入项目中"><a href="#2-将-framework文件拖入项目中" class="headerlink" title="2.将.framework文件拖入项目中"></a>2.将.framework文件拖入项目中</h4><p><img src="/Users/wangyun/Desktop/16.png" alt=""></p>
+<h4 id="3-在ViewController中引入-framework并且使用"><a href="#3-在ViewController中引入-framework并且使用" class="headerlink" title="3.在ViewController中引入.framework并且使用"></a>3.在ViewController中引入.framework并且使用</h4><p><img src="/Users/wangyun/Desktop/17.png" alt=""></p>
+<h4 id="4-大功告成！"><a href="#4-大功告成！" class="headerlink" title="4.大功告成！"></a>4.大功告成！</h4>
+        </div>
+        <div class="post-reply">
+            
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTE4Ni81NzUz">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+            
+            
+        </div>
+    </div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
+
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        <!--请您保留作者署名, 主题制作来之不易-->
+        Theme by <a href="http://haojen.github.io/">Haojen Ma</a>
+        <br>
+        Copyright © John Doe 2018
+        <br>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/search_core.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>
