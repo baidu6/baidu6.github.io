@@ -6,37 +6,37 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   
-  <title>Hexo</title>
+  <title>Swift生成.framework静态库 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Swift生成.framework静态库步骤1.打开Xcode，新建工程，名为TestTool，会自动生成TestTool.h文件。 2.创建一个名字为Hello类继承自NSObject。 3.在Hello中实现一个打印Hello World的方法。 4.更改参数将Build Active Architecture Only 设置为No  将Mach改成静态的 5.设置headers将要公开的头文">
+  <meta name="description" content="步骤1.打开Xcode，新建工程，名为TestTool，会自动生成TestTool.h文件。 2.创建一个名字为Hello类继承自NSObject。 3.在Hello中实现一个打印Hello World的方法。 4.更改参数将Build Active Architecture Only 设置为No  将Mach改成静态的 5.设置headers将要公开的头文件拖到public下，要隐藏的放在pri">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="Swift生成.framework静态库">
 <meta property="og:url" content="http://yoursite.com/2018/05/29/swift_framework/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Swift生成.framework静态库步骤1.打开Xcode，新建工程，名为TestTool，会自动生成TestTool.h文件。 2.创建一个名字为Hello类继承自NSObject。 3.在Hello中实现一个打印Hello World的方法。 4.更改参数将Build Active Architecture Only 设置为No  将Mach改成静态的 5.设置headers将要公开的头文">
+<meta property="og:description" content="步骤1.打开Xcode，新建工程，名为TestTool，会自动生成TestTool.h文件。 2.创建一个名字为Hello类继承自NSObject。 3.在Hello中实现一个打印Hello World的方法。 4.更改参数将Build Active Architecture Only 设置为No  将Mach改成静态的 5.设置headers将要公开的头文件拖到public下，要隐藏的放在pri">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/1.png">
-<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/2.png">
-<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/3.png">
-<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/4.png">
-<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/5.png">
-<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/6.png">
-<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/7.png">
-<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/8.png">
-<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/9.png">
-<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/10.png">
-<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/11.png">
-<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/12.png">
-<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/13.png">
-<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/14.png">
-<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/15.png">
-<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/16.png">
-<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/17.png">
-<meta property="og:updated_time" content="2018-05-29T07:02:29.000Z">
+<meta property="og:image" content="http://yoursite.com/imgs/01-framework/framework1.png">
+<meta property="og:image" content="http://yoursite.com/imgs/01-framework/framework2.png">
+<meta property="og:image" content="http://yoursite.com/imgs/01-framework/framework3.png">
+<meta property="og:image" content="http://yoursite.com/imgs/01-framework/framework4.png">
+<meta property="og:image" content="http://yoursite.com/imgs/01-framework/framework5.png">
+<meta property="og:image" content="http://yoursite.com/imgs/01-framework/framework6.png">
+<meta property="og:image" content="http://yoursite.com/imgs/01-framework/framework7.png">
+<meta property="og:image" content="http://yoursite.com/imgs/01-framework/framework8.png">
+<meta property="og:image" content="http://yoursite.com/imgs/01-framework/framework9.png">
+<meta property="og:image" content="http://yoursite.com/imgs/01-framework/framework10.png">
+<meta property="og:image" content="http://yoursite.com/imgs/01-framework/framework11.png">
+<meta property="og:image" content="http://yoursite.com/imgs/01-framework/framework12.png">
+<meta property="og:image" content="http://yoursite.com/imgs/01-framework/framework13.png">
+<meta property="og:image" content="http://yoursite.com/imgs/01-framework/framework14.png">
+<meta property="og:image" content="http://yoursite.com/imgs/01-framework/framework15.png">
+<meta property="og:image" content="http://yoursite.com/imgs/01-framework/framework16.png">
+<meta property="og:image" content="http://yoursite.com/imgs/01-framework/framework17.png">
+<meta property="og:updated_time" content="2018-05-29T07:20:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="Swift生成.framework静态库步骤1.打开Xcode，新建工程，名为TestTool，会自动生成TestTool.h文件。 2.创建一个名字为Hello类继承自NSObject。 3.在Hello中实现一个打印Hello World的方法。 4.更改参数将Build Active Architecture Only 设置为No  将Mach改成静态的 5.设置headers将要公开的头文">
-<meta name="twitter:image" content="http://yoursite.com/Users/wangyun/Desktop/1.png">
+<meta name="twitter:title" content="Swift生成.framework静态库">
+<meta name="twitter:description" content="步骤1.打开Xcode，新建工程，名为TestTool，会自动生成TestTool.h文件。 2.创建一个名字为Hello类继承自NSObject。 3.在Hello中实现一个打印Hello World的方法。 4.更改参数将Build Active Architecture Only 设置为No  将Mach改成静态的 5.设置headers将要公开的头文件拖到public下，要隐藏的放在pri">
+<meta name="twitter:image" content="http://yoursite.com/imgs/01-framework/framework1.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -138,7 +138,7 @@
     <div class="container post-box">
         <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
             <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
-                <strong>Null</strong>
+                <strong>Swift生成.framework静态库</strong>
             </h1>
             
             <div class="is-flex align-center">
@@ -153,28 +153,28 @@
             
         </div>
         <div class="content" style="overflow: auto">
-            <h1 id="Swift生成-framework静态库"><a href="#Swift生成-framework静态库" class="headerlink" title="Swift生成.framework静态库"></a>Swift生成.framework静态库</h1><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1-打开Xcode，新建工程，名为TestTool，会自动生成TestTool-h文件。"><a href="#1-打开Xcode，新建工程，名为TestTool，会自动生成TestTool-h文件。" class="headerlink" title="1.打开Xcode，新建工程，名为TestTool，会自动生成TestTool.h文件。"></a>1.打开Xcode，新建工程，名为TestTool，会自动生成TestTool.h文件。</h3><p><img src="/Users/wangyun/Desktop/1.png" alt=""></p>
-<h3 id="2-创建一个名字为Hello类继承自NSObject。"><a href="#2-创建一个名字为Hello类继承自NSObject。" class="headerlink" title="2.创建一个名字为Hello类继承自NSObject。"></a>2.创建一个名字为Hello类继承自NSObject。</h3><p><img src="/Users/wangyun/Desktop/2.png" alt=""></p>
-<h3 id="3-在Hello中实现一个打印Hello-World的方法。"><a href="#3-在Hello中实现一个打印Hello-World的方法。" class="headerlink" title="3.在Hello中实现一个打印Hello World的方法。"></a>3.在Hello中实现一个打印Hello World的方法。</h3><p><img src="/Users/wangyun/Desktop/3.png" alt=""></p>
+            <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1-打开Xcode，新建工程，名为TestTool，会自动生成TestTool-h文件。"><a href="#1-打开Xcode，新建工程，名为TestTool，会自动生成TestTool-h文件。" class="headerlink" title="1.打开Xcode，新建工程，名为TestTool，会自动生成TestTool.h文件。"></a>1.打开Xcode，新建工程，名为TestTool，会自动生成TestTool.h文件。</h3><p><img src="/imgs/01-framework/framework1.png" alt=""></p>
+<h3 id="2-创建一个名字为Hello类继承自NSObject。"><a href="#2-创建一个名字为Hello类继承自NSObject。" class="headerlink" title="2.创建一个名字为Hello类继承自NSObject。"></a>2.创建一个名字为Hello类继承自NSObject。</h3><p><img src="/imgs/01-framework/framework2.png" alt=""></p>
+<h3 id="3-在Hello中实现一个打印Hello-World的方法。"><a href="#3-在Hello中实现一个打印Hello-World的方法。" class="headerlink" title="3.在Hello中实现一个打印Hello World的方法。"></a>3.在Hello中实现一个打印Hello World的方法。</h3><p><img src="/imgs/01-framework/framework3.png" alt=""></p>
 <h3 id="4-更改参数"><a href="#4-更改参数" class="headerlink" title="4.更改参数"></a>4.更改参数</h3><p>将Build Active Architecture Only 设置为No</p>
-<p><img src="/Users/wangyun/Desktop/4.png" alt=""></p>
-<p>将Mach改成静态的<br><img src="/Users/wangyun/Desktop/5.png" alt=""></p>
+<p><img src="/imgs/01-framework/framework4.png" alt=""></p>
+<p>将Mach改成静态的<br><img src="/imgs/01-framework/framework5.png" alt=""></p>
 <h3 id="5-设置headers"><a href="#5-设置headers" class="headerlink" title="5.设置headers"></a>5.设置headers</h3><p>将要公开的头文件拖到public下，要隐藏的放在private或者project下。</p>
-<p><img src="/Users/wangyun/Desktop/6.png" alt=""></p>
-<p><img src="/Users/wangyun/Desktop/7.png" alt=""></p>
-<h3 id="6-打包framework"><a href="#6-打包framework" class="headerlink" title="6.打包framework"></a>6.打包framework</h3><h4 id="1-选中模拟器，编译程序；"><a href="#1-选中模拟器，编译程序；" class="headerlink" title="1.选中模拟器，编译程序；"></a>1.选中模拟器，编译程序；</h4><h4 id="2-选中测试机，编译程序；"><a href="#2-选中测试机，编译程序；" class="headerlink" title="2.选中测试机，编译程序；"></a>2.选中测试机，编译程序；</h4><h4 id="3-在finder中找到framework；"><a href="#3-在finder中找到framework；" class="headerlink" title="3.在finder中找到framework；"></a>3.在finder中找到framework；</h4><p><img src="/Users/wangyun/Desktop/8.png" alt=""></p>
-<p>这里会出现两个framework,一个Debug-iphoneod是真机下的，一个Debug-iphonesimulator是模拟器下的：<br><img src="/Users/wangyun/Desktop/9.png" alt=""></p>
+<p><img src="/imgs/01-framework/framework6.png" alt=""></p>
+<p><img src="/imgs/01-framework/framework7.png" alt=""></p>
+<h3 id="6-打包framework"><a href="#6-打包framework" class="headerlink" title="6.打包framework"></a>6.打包framework</h3><h4 id="1-选中模拟器，编译程序；"><a href="#1-选中模拟器，编译程序；" class="headerlink" title="1.选中模拟器，编译程序；"></a>1.选中模拟器，编译程序；</h4><h4 id="2-选中测试机，编译程序；"><a href="#2-选中测试机，编译程序；" class="headerlink" title="2.选中测试机，编译程序；"></a>2.选中测试机，编译程序；</h4><h4 id="3-在finder中找到framework；"><a href="#3-在finder中找到framework；" class="headerlink" title="3.在finder中找到framework；"></a>3.在finder中找到framework；</h4><p><img src="/imgs/01-framework/framework8.png" alt=""></p>
+<p>这里会出现两个framework,一个Debug-iphoneod是真机下的，一个Debug-iphonesimulator是模拟器下的：<br><img src="/imgs/01-framework/framework9.png" alt=""></p>
 <p>现在要将这两个framework合并成一个，在真机和模拟器能够同时使用的framework。</p>
-<p>打开终端输入 lipo -create 模拟器下TestTool路径 真机下TestTool路径 -output 新的路径<br><img src="/Users/wangyun/Desktop/10.png" alt=""></p>
-<p><img src="/Users/wangyun/Desktop/11.png" alt=""></p>
-<p><img src="/Users/wangyun/Desktop/12.png" alt=""></p>
+<p>打开终端输入 lipo -create 模拟器下TestTool路径 真机下TestTool路径 -output 新的路径<br><img src="/imgs/01-framework/framework10.png" alt=""></p>
+<p><img src="/imgs/01-framework/framework11.png" alt=""></p>
+<p><img src="/imgs/01-framework/framework12.png" alt=""></p>
 <p>这里将合成后的文件放在了桌面上，就生成了一个后缀名为.lipo的文件，将后缀名去掉，替换之前真机中的TestTool文件；</p>
-<p><img src="/Users/wangyun/Desktop/13.png" alt=""></p>
-<p>替换之后，<br><img src="/Users/wangyun/Desktop/14.png" alt=""></p>
+<p><img src="/imgs/01-framework/framework13.png" alt=""></p>
+<p>替换之后，<br><img src="/imgs/01-framework/framework14.png" alt=""></p>
 <p>这个framework文件就是我们需要的，在真机和模拟器上都能使用的。</p>
-<h3 id="6-使用-framework"><a href="#6-使用-framework" class="headerlink" title="6.使用.framework"></a>6.使用.framework</h3><h4 id="1-新建一个项目"><a href="#1-新建一个项目" class="headerlink" title="1.新建一个项目"></a>1.新建一个项目</h4><p><img src="/Users/wangyun/Desktop/15.png" alt=""></p>
-<h4 id="2-将-framework文件拖入项目中"><a href="#2-将-framework文件拖入项目中" class="headerlink" title="2.将.framework文件拖入项目中"></a>2.将.framework文件拖入项目中</h4><p><img src="/Users/wangyun/Desktop/16.png" alt=""></p>
-<h4 id="3-在ViewController中引入-framework并且使用"><a href="#3-在ViewController中引入-framework并且使用" class="headerlink" title="3.在ViewController中引入.framework并且使用"></a>3.在ViewController中引入.framework并且使用</h4><p><img src="/Users/wangyun/Desktop/17.png" alt=""></p>
+<h3 id="6-使用-framework"><a href="#6-使用-framework" class="headerlink" title="6.使用.framework"></a>6.使用.framework</h3><h4 id="1-新建一个项目"><a href="#1-新建一个项目" class="headerlink" title="1.新建一个项目"></a>1.新建一个项目</h4><p><img src="/imgs/01-framework/framework15.png" alt=""></p>
+<h4 id="2-将-framework文件拖入项目中"><a href="#2-将-framework文件拖入项目中" class="headerlink" title="2.将.framework文件拖入项目中"></a>2.将.framework文件拖入项目中</h4><p><img src="/imgs/01-framework/framework16.png" alt=""></p>
+<h4 id="3-在ViewController中引入-framework并且使用"><a href="#3-在ViewController中引入-framework并且使用" class="headerlink" title="3.在ViewController中引入.framework并且使用"></a>3.在ViewController中引入.framework并且使用</h4><p><img src="/imgs/01-framework/framework17.png" alt=""></p>
 <h4 id="4-大功告成！"><a href="#4-大功告成！" class="headerlink" title="4.大功告成！"></a>4.大功告成！</h4>
         </div>
         <div class="post-reply">
