@@ -6,19 +6,19 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   
-  <title>Hexo</title>
+  <title>WKWebView在Swift中的简单使用 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="WKWebView在Swift中的简单使用IOS8之后，苹果推出了WKWebView，用来替代UIWebView。WKWebView在性能，占用内存方面有了很大的提升。 0. 初始化WKWebViewlet configuration = WKWebViewConfiguration() configuration.userContentController = WKUserContentCont">
+  <meta name="description" content="IOS8之后，苹果推出了WKWebView，用来替代UIWebView。WKWebView在性能，占用内存方面有了很大的提升。 0. 初始化WKWebViewlet configuration = WKWebViewConfiguration() configuration.userContentController = WKUserContentController() webView = WK">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="WKWebView在Swift中的简单使用">
 <meta property="og:url" content="http://yoursite.com/2018/06/12/WKWebView在Swift中的简单使用/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="WKWebView在Swift中的简单使用IOS8之后，苹果推出了WKWebView，用来替代UIWebView。WKWebView在性能，占用内存方面有了很大的提升。 0. 初始化WKWebViewlet configuration = WKWebViewConfiguration() configuration.userContentController = WKUserContentCont">
+<meta property="og:description" content="IOS8之后，苹果推出了WKWebView，用来替代UIWebView。WKWebView在性能，占用内存方面有了很大的提升。 0. 初始化WKWebViewlet configuration = WKWebViewConfiguration() configuration.userContentController = WKUserContentController() webView = WK">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-12T03:25:02.775Z">
+<meta property="og:updated_time" content="2018-06-12T03:28:10.836Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="WKWebView在Swift中的简单使用IOS8之后，苹果推出了WKWebView，用来替代UIWebView。WKWebView在性能，占用内存方面有了很大的提升。 0. 初始化WKWebViewlet configuration = WKWebViewConfiguration() configuration.userContentController = WKUserContentCont">
+<meta name="twitter:title" content="WKWebView在Swift中的简单使用">
+<meta name="twitter:description" content="IOS8之后，苹果推出了WKWebView，用来替代UIWebView。WKWebView在性能，占用内存方面有了很大的提升。 0. 初始化WKWebViewlet configuration = WKWebViewConfiguration() configuration.userContentController = WKUserContentController() webView = WK">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -120,7 +120,7 @@
     <div class="container post-box">
         <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
             <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
-                <strong>Null</strong>
+                <strong>WKWebView在Swift中的简单使用</strong>
             </h1>
             
             <div class="is-flex align-center">
@@ -135,7 +135,7 @@
             
         </div>
         <div class="content" style="overflow: auto">
-            <h1 id="WKWebView在Swift中的简单使用"><a href="#WKWebView在Swift中的简单使用" class="headerlink" title="WKWebView在Swift中的简单使用"></a>WKWebView在Swift中的简单使用</h1><p>IOS8之后，苹果推出了WKWebView，用来替代UIWebView。WKWebView在性能，占用内存方面有了很大的提升。</p>
+            <p>IOS8之后，苹果推出了WKWebView，用来替代UIWebView。WKWebView在性能，占用内存方面有了很大的提升。</p>
 <h3 id="0-初始化WKWebView"><a href="#0-初始化WKWebView" class="headerlink" title="0. 初始化WKWebView"></a>0. 初始化WKWebView</h3><pre><code>let configuration = WKWebViewConfiguration()
 configuration.userContentController = WKUserContentController()
 webView = WKWebView(frame: view.bounds, configuration: configuration)
