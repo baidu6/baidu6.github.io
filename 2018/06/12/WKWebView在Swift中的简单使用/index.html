@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html class="full-height">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="WKWebView在Swift中的简单使用IOS8之后，苹果推出了WKWebView，用来替代UIWebView。WKWebView在性能，占用内存方面有了很大的提升。 0. 初始化WKWebViewlet configuration = WKWebViewConfiguration() configuration.userContentController = WKUserContentCont">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/06/12/WKWebView在Swift中的简单使用/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="WKWebView在Swift中的简单使用IOS8之后，苹果推出了WKWebView，用来替代UIWebView。WKWebView在性能，占用内存方面有了很大的提升。 0. 初始化WKWebViewlet configuration = WKWebViewConfiguration() configuration.userContentController = WKUserContentCont">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-06-12T03:25:02.775Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="WKWebView在Swift中的简单使用IOS8之后，苹果推出了WKWebView，用来替代UIWebView。WKWebView在性能，占用内存方面有了很大的提升。 0. 初始化WKWebViewlet configuration = WKWebViewConfiguration() configuration.userContentController = WKUserContentCont">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+  
+
+</head>
+
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">三|木子</span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                Home
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                Home
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <!--博文页面-->
+
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
+        background-size: cover;
+        background-color: lightsteelblue;
+    }
+
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
+    }
+
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+
+    .flow-chart {
+        text-align: center;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
+    }
+</style>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>Null</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://avatars1.githubusercontent.com/u/13496742?s=400&u=26ebc2c14f55adba9905b07fb2d54ddb842cca8b&v=4">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> 三|木子</span>
+                <span class="post-date sub-title">at: 2018-06-12</span>
+            </div>
+            
+                <div>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <h1 id="WKWebView在Swift中的简单使用"><a href="#WKWebView在Swift中的简单使用" class="headerlink" title="WKWebView在Swift中的简单使用"></a>WKWebView在Swift中的简单使用</h1><p>IOS8之后，苹果推出了WKWebView，用来替代UIWebView。WKWebView在性能，占用内存方面有了很大的提升。</p>
+<h3 id="0-初始化WKWebView"><a href="#0-初始化WKWebView" class="headerlink" title="0. 初始化WKWebView"></a>0. 初始化WKWebView</h3><pre><code>let configuration = WKWebViewConfiguration()
+configuration.userContentController = WKUserContentController()
+webView = WKWebView(frame: view.bounds, configuration: configuration)
+view.addSubview(webView)
+
+let request = URLRequest(url: URL(fileURLWithPath: Bundle.main.path(forResource: &quot;hello.html&quot;, ofType: nil)!))
+webView.load(request)
+
+webView.navigationDelegate = self
+webView.uiDelegate = self
+</code></pre><h3 id="1-WKWebView-获取页面的title和进度条"><a href="#1-WKWebView-获取页面的title和进度条" class="headerlink" title="1. WKWebView 获取页面的title和进度条"></a>1. WKWebView 获取页面的title和进度条</h3><p>通过用kvo的方法可以监听网页的加载进度， estimatedProgress</p>
+<pre><code>webView.addObserver(self, forKeyPath: &quot;title&quot;, options: NSKeyValueObservingOptions.new, context: nil)
+webView.addObserver(self, forKeyPath: &quot;estimatedProgress&quot;, options: .new, context: nil)
+
+override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    if keyPath == &quot;title&quot; {    //title
+        print(change?[NSKeyValueChangeKey(rawValue: &quot;new&quot;)])
+    } else if keyPath == &quot;estimatedProgress&quot; {   //进度条
+        if let progress = change?[NSKeyValueChangeKey(rawValue: &quot;new&quot;)] as? Float {
+                print(progress)
+        }
+    }
+}
+</code></pre><h3 id="2-WKWebView的navigationDelegate代理方法"><a href="#2-WKWebView的navigationDelegate代理方法" class="headerlink" title="2. WKWebView的navigationDelegate代理方法"></a>2. WKWebView的navigationDelegate代理方法</h3><pre><code>//MARK:- 页面开始加载时候调用
+func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+    print(&quot;页面开始加载&quot;)
+} 
+
+//MARK:- 当内容开始返回的时候调用
+func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+    print(&quot;开始返回内容&quot;)
+}
+
+//MARK:- 页面加载完成之后调用
+func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    print(&quot;页面加载完成&quot;)
+    // swift 调用js
+    let js = &quot;document.getElementsByName(&apos;input&apos;)[0].style.display = &apos;block&apos;;&quot;
+    webView.evaluateJavaScript(js) { (response, error) in
+        print(&quot;response: \(response)&quot;)
+        print(&quot;error: \(error)&quot;)
+    }
+}
+
+//MARK:- 页面加载失败的时候调用
+func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+    print(&quot;页面加载失败&quot;)
+}
+
+//MARK:- 在发送请求之前，决定是否跳转【可拦截URL做些操作什么的】
+func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -&gt; Swift.Void) {
+    if let urlString = navigationAction.request.url?.absoluteString {
+        print(urlString)
+    }
+}
+
+//MARK:- 在收到响应后 决定是否跳转
+func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -&gt; Swift.Void) {
+    print(navigationResponse.response.url?.absoluteString)
+    decisionHandler(WKNavigationResponsePolicy.allow)   //允许跳转
+    //decisionHandler(WKNavigationResponsePolicy.cancel)  //不允许跳转
+}
+</code></pre><h3 id="3-WKWebView的WKUIDelegate代理方法"><a href="#3-WKWebView的WKUIDelegate代理方法" class="headerlink" title="3.WKWebView的WKUIDelegate代理方法"></a>3.WKWebView的WKUIDelegate代理方法</h3><pre><code>//MARK:- 网页执行alert的时候调用
+func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -&gt; Void) {
+
+let alert = UIAlertController(title: &quot;提示&quot;, message: message, preferredStyle: UIAlertControllerStyle.alert)
+alert.addAction(UIAlertAction(title: &quot;确定&quot;, style: UIAlertActionStyle.default, handler: { (_) in
+        completionHandler()
+    }))
+    self.present(alert, animated: true, completion: nil)
+}
+
+
+//MARK:- js中的confirm确定框, 在completionHandler中用户选择返回
+func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -&gt; Swift.Void) {
+    print(message)
+    let alert = UIAlertController(title: &quot;提示&quot;, message: message, preferredStyle: UIAlertControllerStyle.alert)
+    alert.addAction(UIAlertAction(title: &quot;确定&quot;, style: UIAlertActionStyle.default, handler: { (_) in
+        completionHandler(true)
+    }))
+    self.present(alert, animated: true, completion: nil)
+}
+
+
+//MARK:- js中的prompt输入弹出框，completionHandler将输入信息返回
+func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -&gt; Swift.Void) {
+    print(prompt, defaultText)
+    completionHandler(nil)
+}
+
+func webViewDidClose(_ webView: WKWebView) {
+    print(&quot;webViewDidClose&quot;)
+}
+</code></pre><h3 id="4-Swift调用JS代码"><a href="#4-Swift调用JS代码" class="headerlink" title="4. Swift调用JS代码"></a>4. Swift调用JS代码</h3><pre><code>// swift 调用js
+let js = &quot;document.getElementsByName(&apos;input&apos;)[0].style.display = &apos;block&apos;;&quot;
+webView.evaluateJavaScript(js) { (response, error) in
+        print(&quot;response: \(response)&quot;)
+        print(&quot;error: \(error)&quot;)
+    }
+</code></pre><h3 id="5-JS调用Swift代码"><a href="#5-JS调用Swift代码" class="headerlink" title="5. JS调用Swift代码"></a>5. JS调用Swift代码</h3><p>除了拦截URL之外， WKWebView中提供WKScriptMessageHandler这个协议来处理js调用swift代码，首先在js中定义一个方法，</p>
+<pre><code>window.webkit.messageHandlers.ClickMe.postMessage({&quot;name&quot;: &quot;wangyun&quot;, &quot;age&quot;: 35})
+</code></pre><p>然后在Swift中：</p>
+<pre><code>//添加js的方法ClickMe
+webView.configuration.userContentController.add(self, name: &quot;ClickMe&quot;)
+</code></pre><p>遵守WKScriptMessageHandler协议，实现方法：</p>
+<pre><code>func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+    if message.name == &quot;ClickMe&quot; {
+        print(message.body)
+    }
+}
+</code></pre><h3 id="6-文章中的html代码"><a href="#6-文章中的html代码" class="headerlink" title="6. 文章中的html代码"></a>6. 文章中的html代码</h3><pre><code>&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot; /&gt;
+        &lt;title&gt;Hello&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;Hello World!&lt;/p&gt;
+        &lt;input style = &quot;display:none&quot; name = &quot;input&quot; value = &quot;I am input&quot; / &gt;
+        &lt;button type=&quot;button&quot; onclick=&quot;alertAction()&quot;&gt;alert&lt;/button&gt;
+        &lt;button type=&quot;button&quot; onclick=&quot;confirmAction()&quot;&gt;confirm&lt;/button&gt;
+        &lt;button type=&quot;button&quot; onclick=&quot;promptAction()&quot;&gt;prompt&lt;/button&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            function alertAction() {
+                window.alert(&quot;click me alert!&quot;);
+                window.webkit.messageHandlers.ClickMe.postMessage({&quot;name&quot;: &quot;wangyun&quot;, &quot;age&quot;: 35})
+            }
+
+            function confirmAction() {
+                confirm(&quot;你确定要喝水吗？&quot;)
+            }
+
+            function promptAction() {
+                prompt(&quot;请输入您的名字&quot;, &quot;jack.&quot;)
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        </div>
+        <div class="post-reply">
+            
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTE4Ni81NzUz">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+            
+            
+        </div>
+    </div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
+
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        <!--请您保留作者署名, 主题制作来之不易-->
+        Theme by <a href="http://haojen.github.io/">Haojen Ma</a>
+        <br>
+        Copyright © John Doe 2018
+        <br>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/search_core.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>
