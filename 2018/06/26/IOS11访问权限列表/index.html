@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="full-height">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  <title>IOS11访问权限列表 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在IOS11中，需要在info.plist中添加对应的key，才能够访问手机的相册，相机等功能；    隐私 key 提示语句     相册（读） NSPhotoLibraryUsageDescription “xxx需要您的同意，才能够访问相册，以便于xxx”   相册（写） NSPhotoLibraryAddUsageDescription “xxx需要您的同意，才能够添加照片，以便于xxx”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IOS11访问权限列表">
+<meta property="og:url" content="http://yoursite.com/2018/06/26/IOS11访问权限列表/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在IOS11中，需要在info.plist中添加对应的key，才能够访问手机的相册，相机等功能；    隐私 key 提示语句     相册（读） NSPhotoLibraryUsageDescription “xxx需要您的同意，才能够访问相册，以便于xxx”   相册（写） NSPhotoLibraryAddUsageDescription “xxx需要您的同意，才能够添加照片，以便于xxx”">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-06-26T08:35:31.982Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IOS11访问权限列表">
+<meta name="twitter:description" content="在IOS11中，需要在info.plist中添加对应的key，才能够访问手机的相册，相机等功能；    隐私 key 提示语句     相册（读） NSPhotoLibraryUsageDescription “xxx需要您的同意，才能够访问相册，以便于xxx”   相册（写） NSPhotoLibraryAddUsageDescription “xxx需要您的同意，才能够添加照片，以便于xxx”">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+  
+
+</head>
+
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">三|木子</span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                Home
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                Home
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <!--博文页面-->
+
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
+        background-size: cover;
+        background-color: lightsteelblue;
+    }
+
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
+    }
+
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+
+    .flow-chart {
+        text-align: center;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
+    }
+</style>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>IOS11访问权限列表</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://avatars1.githubusercontent.com/u/13496742?s=400&u=26ebc2c14f55adba9905b07fb2d54ddb842cca8b&v=4">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> 三|木子</span>
+                <span class="post-date sub-title">at: 2018-06-26</span>
+            </div>
+            
+                <div>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <p>在IOS11中，需要在info.plist中添加对应的key，才能够访问手机的相册，相机等功能；</p>
+<table>
+<thead>
+<tr>
+<th>隐私</th>
+<th>key</th>
+<th>提示语句</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>相册（读）</td>
+<td>NSPhotoLibraryUsageDescription</td>
+<td>“xxx需要您的同意，才能够访问相册，以便于xxx”</td>
+</tr>
+<tr>
+<td>相册（写）</td>
+<td>NSPhotoLibraryAddUsageDescription</td>
+<td>“xxx需要您的同意，才能够添加照片，以便于xxx”</td>
+</tr>
+<tr>
+<td>相机</td>
+<td>NSCameraUsageDescription</td>
+<td>“xxx需要您的同意，才能访问相机，以便于xxx”</td>
+</tr>
+<tr>
+<td>麦克风</td>
+<td>NSMicrophoneUsageDescription</td>
+<td>“xxx需要您的同意，才能访问麦克风，以便于xxx”</td>
+</tr>
+<tr>
+<td>位置</td>
+<td>NSLocationUsageDescription</td>
+<td>“xxx需要您的同意，才能访问位置，以便于xxx”</td>
+</tr>
+<tr>
+<td>在使用期间访问位置</td>
+<td>NSLocationWhenInUseUsageDescription</td>
+<td>“xxx需要您的同意，才能在使用期间访问位置，以便于xxx”</td>
+</tr>
+<tr>
+<td>始终访问位置</td>
+<td>NSLocationAlwaysUsageDescription</td>
+<td>“xxx需要您的同意，才能始终访问位置，以便于xxx”</td>
+</tr>
+<tr>
+<td>日历</td>
+<td>NSCalendarsUsageDescription</td>
+<td>“xxx需要您的同意，才能访问日历，以便于xxx”</td>
+</tr>
+<tr>
+<td>提醒事项</td>
+<td>NSRemindersUsageDescription</td>
+<td>“xxx需要您的同意，才能访问提醒事项，以便于xxx”</td>
+</tr>
+<tr>
+<td>运动与健身</td>
+<td>NSMotionUsageDescription</td>
+<td>“xxx需要您的同意，才能访问运动与健身，以便于xxx”</td>
+</tr>
+<tr>
+<td>健康更新</td>
+<td>NSHealthUpdateUsageDescription</td>
+<td>“xxx需要您的同意，才能访问健康更新，以便于xxx”</td>
+</tr>
+<tr>
+<td>健康分享</td>
+<td>NSHealthShareUsageDescription</td>
+<td>“xxx需要您的同意，才能访问健康分享，以便于xxx”</td>
+</tr>
+<tr>
+<td>蓝牙</td>
+<td>NSBluetoothPeripheralUsageDescription</td>
+<td>“xxx需要您的同意，才能访问蓝牙，以便于xxx”</td>
+</tr>
+<tr>
+<td>媒体资料库</td>
+<td>NSAppleMusicUsageDescription</td>
+<td>“xxx需要您的同意，才能访问媒体资料库，以便于xxx”</td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+        <div class="post-reply">
+            
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTE4Ni81NzUz">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+            
+            
+        </div>
+    </div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
+
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        <!--请您保留作者署名, 主题制作来之不易-->
+        Theme by <a href="http://haojen.github.io/">Haojen Ma</a>
+        <br>
+        Copyright © John Doe 2018
+        <br>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/search_core.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>
