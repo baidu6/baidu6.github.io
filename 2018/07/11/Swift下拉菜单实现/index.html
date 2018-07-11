@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html class="full-height">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  <title>Swift下拉菜单实现 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.效果图 2.实现过程整体思路就是创建一个View，两个tableView，一个背景bgView。实现一个代理协议和一个数据源协议，通过设置代理和数据源传值。 2.1 代理和数据源private let SCREEN_WIDTH = UIScreen.main.bounds.size.width private let SCREEN_HEIGHT = UIScreen.main.bounds.s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift下拉菜单实现">
+<meta property="og:url" content="http://yoursite.com/2018/07/11/Swift下拉菜单实现/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.效果图 2.实现过程整体思路就是创建一个View，两个tableView，一个背景bgView。实现一个代理协议和一个数据源协议，通过设置代理和数据源传值。 2.1 代理和数据源private let SCREEN_WIDTH = UIScreen.main.bounds.size.width private let SCREEN_HEIGHT = UIScreen.main.bounds.s">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/Users/wangyun/Desktop/dropDown.gif">
+<meta property="og:updated_time" content="2018-07-11T07:39:02.065Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift下拉菜单实现">
+<meta name="twitter:description" content="1.效果图 2.实现过程整体思路就是创建一个View，两个tableView，一个背景bgView。实现一个代理协议和一个数据源协议，通过设置代理和数据源传值。 2.1 代理和数据源private let SCREEN_WIDTH = UIScreen.main.bounds.size.width private let SCREEN_HEIGHT = UIScreen.main.bounds.s">
+<meta name="twitter:image" content="http://yoursite.com/Users/wangyun/Desktop/dropDown.gif">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+  
+
+</head>
+
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">三|木子</span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                Home
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                Home
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <!--博文页面-->
+
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
+        background-size: cover;
+        background-color: lightsteelblue;
+    }
+
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
+    }
+
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+
+    .flow-chart {
+        text-align: center;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
+    }
+</style>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>Swift下拉菜单实现</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://avatars1.githubusercontent.com/u/13496742?s=400&u=26ebc2c14f55adba9905b07fb2d54ddb842cca8b&v=4">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> 三|木子</span>
+                <span class="post-date sub-title">at: 2018-07-11</span>
+            </div>
+            
+                <div>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <h4 id="1-效果图"><a href="#1-效果图" class="headerlink" title="1.效果图"></a>1.效果图</h4><p><img src="/Users/wangyun/Desktop/dropDown.gif" alt=""></p>
+<h4 id="2-实现过程"><a href="#2-实现过程" class="headerlink" title="2.实现过程"></a>2.实现过程</h4><p>整体思路就是创建一个View，两个tableView，一个背景bgView。实现一个代理协议和一个数据源协议，通过设置代理和数据源传值。</p>
+<h5 id="2-1-代理和数据源"><a href="#2-1-代理和数据源" class="headerlink" title="2.1 代理和数据源"></a>2.1 代理和数据源</h5><pre><code>private let SCREEN_WIDTH = UIScreen.main.bounds.size.width
+private let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
+
+protocol DropMenuViewDelegate: NSObjectProtocol {
+    func menu(_ menu: DropMenuView, didSelectRowAtIndexPath index: DropMenuView.Index)
+}
+
+protocol DropMenuViewDataSource: NSObjectProtocol {
+
+func numberOfColumns(in menu: DropMenuView) -&gt; Int
+
+func menu(_ menu: DropMenuView, numberOfRowsInColumn column: Int) -&gt; Int
+
+func menu(_ menu: DropMenuView, titleForRowsInIndePath index: DropMenuView.Index) -&gt; String
+
+func menu(_ menu: DropMenuView, numberOfItemsInRow row: Int, inColumn: Int) -&gt; Int
+
+func menu(_ menu: DropMenuView, titleForItemInIndexPath indexPath: DropMenuView.Index) -&gt; String
+}
+
+extension DropMenuViewDataSource {
+func numberOfColumns(in menu: DropMenuView) -&gt; Int {
+    return 1
+}
+
+func menu(_ menu: DropMenuView, numberOfItemsInRow row: Int, inColumn: Int) -&gt; Int {
+    return 0
+}
+
+func menu(_ menu: DropMenuView, titleForItemInIndexPath indexPath: DropMenuView.Index) -&gt; String {
+    return &quot;&quot;
+}
+}
+</code></pre><h5 id="2-2-根据菜单列数创建button"><a href="#2-2-根据菜单列数创建button" class="headerlink" title="2.2 根据菜单列数创建button"></a>2.2 根据菜单列数创建button</h5><pre><code>private func createTitleButtons(columns: Int) {
+
+    let btnW: CGFloat = SCREEN_WIDTH / CGFloat(columns)
+    let btnH: CGFloat = self.menuHeight
+    let btnY: CGFloat = 0
+    var btnX: CGFloat = 0
+
+    for i in 0..&lt;columns {
+        let btn = UIButton(type: .custom)
+        btnX = CGFloat(i) * btnW
+        btn.frame = CGRect(x: btnX, y: btnY, width: btnW, height: btnH)
+        btn.setTitle(dataSource?.menu(self, titleForRowsInIndePath: Index(column: i, row: 0)), for: UIControlState.normal)
+        btn.setTitleColor(titleColor, for: .normal)
+        btn.titleLabel?.font = titleFont
+        btn.addTarget(self, action: #selector(titleBtnDidClick(btn:)), for: .touchUpInside)
+        btn.tag = i + 1000
+        addSubview(btn)
+        titleButtons.append(btn)
+
+        let seperatorLine = UIView(frame: CGRect(x: btn.frame.maxX, y: 0, width: 1, height: btnH))
+        seperatorLine.backgroundColor = seperatorLineColor
+        addSubview(seperatorLine)
+    }
+}
+</code></pre><h5 id="2-3-button点击时候控制tableView的展示或者隐藏"><a href="#2-3-button点击时候控制tableView的展示或者隐藏" class="headerlink" title="2.3 button点击时候控制tableView的展示或者隐藏"></a>2.3 button点击时候控制tableView的展示或者隐藏</h5><pre><code>@objc func titleBtnDidClick(btn: UIButton) {
+    let column = btn.tag - 1000
+
+    guard let dataSource = dataSource else {
+        return
+    }
+
+    if selectedColumn == column &amp;&amp; isShow {
+        // 收回列表
+        animationTableView(show: false)
+        isShow = false
+
+    } else {
+        selectedColumn = column
+        leftTableView.reloadData()
+
+        // 刷新右边tableView
+        if dataSource.menu(self, numberOfItemsInRow: selectedRows[selectedColumn], inColumn: selectedColumn) &gt; 0 {
+            rightTableView.reloadData()
+        }
+
+        // 展开列表
+        animationTableView(show: true)
+        isShow = true
+    }
+}
+</code></pre><h5 id="2-4-展示或者隐藏TableView"><a href="#2-4-展示或者隐藏TableView" class="headerlink" title="2.4 展示或者隐藏TableView"></a>2.4 展示或者隐藏TableView</h5><pre><code> //MARK:- 展示或者隐藏TableView
+func animationTableView(show: Bool) {
+    var haveItems = false
+    let rows = leftTableView.numberOfRows(inSection: 0)
+    if let dataSource = dataSource {
+        for i in 0..&lt;rows {
+            if dataSource.menu(self, numberOfItemsInRow: i, inColumn: selectedColumn) &gt; 0 {
+                haveItems = true
+            }
+        }
+    }
+
+    let tableViewHeight = CGFloat(rows) * cellHeight &gt; maxTableViewHeight ? maxTableViewHeight : CGFloat(rows) * cellHeight
+
+    if show {
+        superview?.addSubview(backgroundView)
+        superview?.addSubview(self)
+
+        if haveItems {
+            leftTableView.frame = CGRect(x: menuOrigin.x, y: menuOrigin.y + menuHeight, width: SCREEN_WIDTH * 0.5, height: 0)
+            rightTableView.frame = CGRect(x: SCREEN_WIDTH * 0.5, y: menuOrigin.y + menuHeight, width: SCREEN_WIDTH * 0.5, height: 0)
+            superview?.addSubview(leftTableView)
+            superview?.addSubview(rightTableView)
+        } else {
+            rightTableView.removeFromSuperview()
+            leftTableView.frame = CGRect(x: menuOrigin.x, y: menuOrigin.y + menuHeight, width: SCREEN_WIDTH, height: 0)
+            superview?.addSubview(leftTableView)
+        }
+
+        UIView.animate(withDuration: animationDuration) {
+            self.backgroundView.alpha = 1.0
+            self.leftTableView.frame.size.height = tableViewHeight
+            if haveItems {
+                self.rightTableView.frame.size.height = tableViewHeight
+            }
+        }
+    } else {
+        UIView.animate(withDuration: animationDuration, animations: {
+            self.backgroundView.alpha = 0
+            self.leftTableView.frame.size.height = 0
+            if haveItems {
+                self.rightTableView.frame.size.height = 0
+            }
+        }) { (_) in
+            self.backgroundView.removeFromSuperview()
+            self.leftTableView.removeFromSuperview()
+            if haveItems {
+                self.rightTableView.removeFromSuperview()
+            }
+        }
+    }
+}
+</code></pre><h5 id="2-5-实现tableView的代理和数据源方法"><a href="#2-5-实现tableView的代理和数据源方法" class="headerlink" title="2.5 实现tableView的代理和数据源方法"></a>2.5 实现tableView的代理和数据源方法</h5><pre><code>extension DropMenuView: UITableViewDelegate, UITableViewDataSource {
+func numberOfSections(in tableView: UITableView) -&gt; Int {
+    return 1
+}
+
+func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
+    if let dataSource = dataSource {
+        if tableView == leftTableView {
+            return dataSource.menu(self, numberOfRowsInColumn: selectedColumn)
+        } else {
+            return dataSource.menu(self, numberOfItemsInRow: selectedRows[selectedColumn], inColumn: selectedColumn)
+        }
+    }
+    return 0
+}
+
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: DropViewTableCellID)
+
+    if let dataSource = dataSource {
+        if tableView == leftTableView {
+            cell?.textLabel?.text = dataSource.menu(self, titleForRowsInIndePath: Index(column: selectedColumn, row: indexPath.row))
+
+            // 选中上次选中的那行
+            if selectedRows[selectedColumn] == indexPath.row {
+                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+            }
+
+        } else {
+            cell?.textLabel?.text = dataSource.menu(self, titleForItemInIndexPath: Index(column: selectedColumn, row: selectedRows[selectedColumn], item: indexPath.row))
+
+            //选中上次选中的行
+            if cell?.textLabel?.text == titleButtons[selectedColumn].titleLabel?.text {
+                leftTableView.selectRow(at: IndexPath(row: selectedRows[selectedColumn], section: 0), animated: true, scrollPosition: .none)
+                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+            }
+        }
+    }
+
+    return cell!
+}
+
+func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    guard let dataSource = dataSource else {
+        return
+    }
+
+    if tableView == leftTableView {
+        selectedRows[selectedColumn] = indexPath.row
+
+        let haveItems = dataSource.menu(self, numberOfItemsInRow: indexPath.row, inColumn: selectedColumn) &gt; 0
+        if haveItems {
+            rightTableView.reloadData()
+        } else {
+            //收回列表
+            animationTableView(show: false)
+            isShow = false
+
+            //更新title
+            titleButtons[selectedColumn].setTitle(dataSource.menu(self, titleForRowsInIndePath: Index(column: selectedColumn, row: indexPath.row)), for: .normal)
+        }
+        delegate?.menu(self, didSelectRowAtIndexPath: Index(column: selectedColumn, row: indexPath.row))
+    } else {
+
+        //收回列表
+        animationTableView(show: false)
+        isShow = false
+
+        let index = Index(column: selectedColumn, row: selectedRows[selectedColumn], item: indexPath.row)
+
+        //更新title
+        titleButtons[selectedColumn].setTitle(dataSource.menu(self, titleForItemInIndexPath: index), for: .normal)
+
+        delegate?.menu(self, didSelectRowAtIndexPath: index)
+    }
+
+}
+
+func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -&gt; CGFloat {
+    return cellHeight
+}
+}
+</code></pre><h4 id="3-所有代码"><a href="#3-所有代码" class="headerlink" title="3.所有代码"></a>3.所有代码</h4><pre><code>private let SCREEN_WIDTH = UIScreen.main.bounds.size.width
+private let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
+
+protocol DropMenuViewDelegate: NSObjectProtocol {
+    func menu(_ menu: DropMenuView, didSelectRowAtIndexPath index: DropMenuView.Index)
+}
+
+protocol DropMenuViewDataSource: NSObjectProtocol {
+
+func numberOfColumns(in menu: DropMenuView) -&gt; Int
+
+func menu(_ menu: DropMenuView, numberOfRowsInColumn column: Int) -&gt; Int
+
+func menu(_ menu: DropMenuView, titleForRowsInIndePath index: DropMenuView.Index) -&gt; String
+
+func menu(_ menu: DropMenuView, numberOfItemsInRow row: Int, inColumn: Int) -&gt; Int
+
+func menu(_ menu: DropMenuView, titleForItemInIndexPath indexPath: DropMenuView.Index) -&gt; String
+}
+
+extension DropMenuViewDataSource {
+    func numberOfColumns(in menu: DropMenuView) -&gt; Int {
+        return 1
+}
+
+func menu(_ menu: DropMenuView, numberOfItemsInRow row: Int, inColumn: Int) -&gt; Int {
+    return 0
+}
+
+func menu(_ menu: DropMenuView, titleForItemInIndexPath indexPath: DropMenuView.Index) -&gt; String {
+    return &quot;&quot;
+}
+}
+
+
+import UIKit
+
+class DropMenuView: UIView {
+
+public struct Index {
+    // 列
+    var column: Int
+    //行
+    var row: Int
+    //item
+    var item: Int
+
+    init(column: Int, row: Int, item: Int = -1) {
+        self.column = column
+        self.row = row
+        self.item = item
+    }
+}
+
+//MARK:- 数据源
+weak var dataSource: DropMenuViewDataSource? {
+    didSet {
+        if oldValue === dataSource {
+            return
+        }
+        dataSourceDidSet(dataSource: dataSource!)
+    }
+}
+
+weak var delegate: DropMenuViewDelegate?
+
+private lazy var leftTableView: UITableView = {
+    let tableView = UITableView(frame: CGRect(x: menuOrigin.x, y: menuOrigin.y + menuHeight, width: SCREEN_WIDTH, height: 0))
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: DropViewTableCellID)
+    tableView.delegate = self
+    tableView.dataSource = self
+    return tableView
+}()
+
+private lazy var rightTableView: UITableView = {
+    let tableView = UITableView(frame: CGRect(x: menuOrigin.x, y: menuOrigin.y + menuHeight, width: SCREEN_WIDTH, height: 0))
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: DropViewTableCellID)
+    tableView.delegate = self
+    tableView.dataSource = self
+    return tableView
+}()
+
+private lazy var backgroundView: UIView = {
+    let bgView = UIView(frame: CGRect(x: menuOrigin.x, y: menuOrigin.y, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+    bgView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+    bgView.alpha = 0
+    return bgView
+}()
+
+// 菜单的原点坐标
+private var menuOrigin: CGPoint = CGPoint.zero
+// 菜单高度
+private var menuHeight: CGFloat = 0
+// tableView最大高度
+private var maxTableViewHeight: CGFloat = SCREEN_HEIGHT - 200
+// 当前选中的是哪一列
+private var selectedColumn: Int = -1
+// 每一列选中的row
+private var selectedRows = Array&lt;Int&gt;()
+// 列表是否正在展示
+private var isShow: Bool = false
+// 动画时长
+private var animationDuration: TimeInterval = 0.25
+// cell的高度
+private let cellHeight: CGFloat = 50
+// cell的标识
+private let DropViewTableCellID = &quot;DropViewTableCellID&quot;
+// titleButtons
+private var titleButtons = [UIButton]()
+// 背景颜色
+private var bgColor: UIColor = UIColor.orange
+// title字体颜色
+private var titleColor: UIColor =  UIColor.white
+// title 字体大小
+private var titleFont: UIFont = UIFont.systemFont(ofSize: 15)
+// 分割线颜色
+private var seperatorLineColor: UIColor = UIColor.lightGray
+
+init(menuOrigin: CGPoint, menuHeight: CGFloat) {
+    self.menuOrigin = menuOrigin
+    self.menuHeight = menuHeight
+
+    super.init(frame: CGRect(x: menuOrigin.x, y: menuOrigin.y, width: SCREEN_WIDTH, height: menuHeight))
+
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapToDismiss))
+    backgroundView.addGestureRecognizer(tapGesture)
+
+    backgroundColor = bgColor
+
+}
+
+@objc func tapToDismiss() {
+    animationTableView(show: false)
+    isShow = false
+}
+
+required init?(coder aDecoder: NSCoder) {
+    fatalError(&quot;init(coder:) has not been implemented&quot;)
+}
+
+
+func dataSourceDidSet(dataSource: DropMenuViewDataSource) {
+    let columns = dataSource.numberOfColumns(in: self)
+    createTitleButtons(columns: columns)
+
+    selectedRows = Array&lt;Int&gt;(repeating: 0, count: columns)
+}
+
+private func createTitleButtons(columns: Int) {
+
+    let btnW: CGFloat = SCREEN_WIDTH / CGFloat(columns)
+    let btnH: CGFloat = self.menuHeight
+    let btnY: CGFloat = 0
+    var btnX: CGFloat = 0
+
+    for i in 0..&lt;columns {
+        let btn = UIButton(type: .custom)
+        btnX = CGFloat(i) * btnW
+        btn.frame = CGRect(x: btnX, y: btnY, width: btnW, height: btnH)
+        btn.setTitle(dataSource?.menu(self, titleForRowsInIndePath: Index(column: i, row: 0)), for: UIControlState.normal)
+        btn.setTitleColor(titleColor, for: .normal)
+        btn.titleLabel?.font = titleFont
+        btn.addTarget(self, action: #selector(titleBtnDidClick(btn:)), for: .touchUpInside)
+        btn.tag = i + 1000
+        addSubview(btn)
+        titleButtons.append(btn)
+
+        let seperatorLine = UIView(frame: CGRect(x: btn.frame.maxX, y: 0, width: 1, height: btnH))
+        seperatorLine.backgroundColor = seperatorLineColor
+        addSubview(seperatorLine)
+    }
+}
+
+@objc func titleBtnDidClick(btn: UIButton) {
+    let column = btn.tag - 1000
+
+    guard let dataSource = dataSource else {
+        return
+    }
+
+    if selectedColumn == column &amp;&amp; isShow {
+        // 收回列表
+        animationTableView(show: false)
+        isShow = false
+
+    } else {
+        selectedColumn = column
+        leftTableView.reloadData()
+
+        // 刷新右边tableView
+        if dataSource.menu(self, numberOfItemsInRow: selectedRows[selectedColumn], inColumn: selectedColumn) &gt; 0 {
+            rightTableView.reloadData()
+        }
+
+        // 展开列表
+        animationTableView(show: true)
+        isShow = true
+    }
+}
+
+//MARK:- 展示或者隐藏TableView
+func animationTableView(show: Bool) {
+    var haveItems = false
+    let rows = leftTableView.numberOfRows(inSection: 0)
+    if let dataSource = dataSource {
+        for i in 0..&lt;rows {
+            if dataSource.menu(self, numberOfItemsInRow: i, inColumn: selectedColumn) &gt; 0 {
+                haveItems = true
+            }
+        }
+    }
+
+    let tableViewHeight = CGFloat(rows) * cellHeight &gt; maxTableViewHeight ? maxTableViewHeight : CGFloat(rows) * cellHeight
+
+    if show {
+        superview?.addSubview(backgroundView)
+        superview?.addSubview(self)
+
+        if haveItems {
+            leftTableView.frame = CGRect(x: menuOrigin.x, y: menuOrigin.y + menuHeight, width: SCREEN_WIDTH * 0.5, height: 0)
+            rightTableView.frame = CGRect(x: SCREEN_WIDTH * 0.5, y: menuOrigin.y + menuHeight, width: SCREEN_WIDTH * 0.5, height: 0)
+            superview?.addSubview(leftTableView)
+            superview?.addSubview(rightTableView)
+        } else {
+            rightTableView.removeFromSuperview()
+            leftTableView.frame = CGRect(x: menuOrigin.x, y: menuOrigin.y + menuHeight, width: SCREEN_WIDTH, height: 0)
+            superview?.addSubview(leftTableView)
+        }
+
+        UIView.animate(withDuration: animationDuration) {
+            self.backgroundView.alpha = 1.0
+            self.leftTableView.frame.size.height = tableViewHeight
+            if haveItems {
+                self.rightTableView.frame.size.height = tableViewHeight
+            }
+        }
+    } else {
+        UIView.animate(withDuration: animationDuration, animations: {
+            self.backgroundView.alpha = 0
+            self.leftTableView.frame.size.height = 0
+            if haveItems {
+                self.rightTableView.frame.size.height = 0
+            }
+        }) { (_) in
+            self.backgroundView.removeFromSuperview()
+            self.leftTableView.removeFromSuperview()
+            if haveItems {
+                self.rightTableView.removeFromSuperview()
+            }
+        }
+    }
+}
+
+}
+
+extension DropMenuView: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -&gt; Int {
+        return 1
+    }
+
+func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
+    if let dataSource = dataSource {
+        if tableView == leftTableView {
+            return dataSource.menu(self, numberOfRowsInColumn: selectedColumn)
+        } else {
+            return dataSource.menu(self, numberOfItemsInRow: selectedRows[selectedColumn], inColumn: selectedColumn)
+        }
+    }
+    return 0
+}
+
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: DropViewTableCellID)
+
+    if let dataSource = dataSource {
+        if tableView == leftTableView {
+            cell?.textLabel?.text = dataSource.menu(self, titleForRowsInIndePath: Index(column: selectedColumn, row: indexPath.row))
+
+            // 选中上次选中的那行
+            if selectedRows[selectedColumn] == indexPath.row {
+                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+            }
+
+        } else {
+            cell?.textLabel?.text = dataSource.menu(self, titleForItemInIndexPath: Index(column: selectedColumn, row: selectedRows[selectedColumn], item: indexPath.row))
+
+            //选中上次选中的行
+            if cell?.textLabel?.text == titleButtons[selectedColumn].titleLabel?.text {
+                leftTableView.selectRow(at: IndexPath(row: selectedRows[selectedColumn], section: 0), animated: true, scrollPosition: .none)
+                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+            }
+        }
+    }
+
+    return cell!
+}
+
+func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    guard let dataSource = dataSource else {
+        return
+    }
+
+    if tableView == leftTableView {
+        selectedRows[selectedColumn] = indexPath.row
+
+        let haveItems = dataSource.menu(self, numberOfItemsInRow: indexPath.row, inColumn: selectedColumn) &gt; 0
+        if haveItems {
+            rightTableView.reloadData()
+        } else {
+            //收回列表
+            animationTableView(show: false)
+            isShow = false
+
+            //更新title
+            titleButtons[selectedColumn].setTitle(dataSource.menu(self, titleForRowsInIndePath: Index(column: selectedColumn, row: indexPath.row)), for: .normal)
+        }
+        delegate?.menu(self, didSelectRowAtIndexPath: Index(column: selectedColumn, row: indexPath.row))
+    } else {
+
+        //收回列表
+        animationTableView(show: false)
+        isShow = false
+
+        let index = Index(column: selectedColumn, row: selectedRows[selectedColumn], item: indexPath.row)
+
+        //更新title
+        titleButtons[selectedColumn].setTitle(dataSource.menu(self, titleForItemInIndexPath: index), for: .normal)
+
+        delegate?.menu(self, didSelectRowAtIndexPath: index)
+    }
+
+}
+
+func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -&gt; CGFloat {
+    return cellHeight
+}
+}
+</code></pre><h4 id="4-在控制器中使用"><a href="#4-在控制器中使用" class="headerlink" title="4.在控制器中使用"></a>4.在控制器中使用</h4><pre><code>import UIKit
+
+class ViewController: UIViewController {
+
+struct DropMenuData {
+    static var TitleDatas = [&quot;出售&quot;, &quot;区域&quot;, &quot;来源&quot;]
+
+    // 房屋类型
+    static var HouseType = [&quot;出租&quot;, &quot;出售&quot;]
+    // 区域
+    static var HouseArea = [&quot;东城区&quot;: [&quot;安定门&quot;, &quot;交道口&quot;, &quot;王府井&quot;, &quot;和平里&quot;, &quot;北新桥&quot;, &quot;东直门外&quot;, &quot;东直门&quot;, &quot;雍和宫&quot;], &quot;西城区&quot;: [&quot;新街口&quot;, &quot;阜成门&quot;, &quot;金融街&quot;, &quot;长椿街&quot;, &quot;西单&quot;], &quot;朝阳区&quot;: [&quot;双井&quot;, &quot;国贸&quot;, &quot;北苑&quot;, &quot;大望路&quot;, &quot;四惠&quot;, &quot;十里堡&quot;, &quot;花家池&quot;], &quot;丰台区&quot;: [&quot;方庄&quot;, &quot;角门&quot;, &quot;草桥&quot;, &quot;木樨园&quot;, &quot;宋家庄&quot;, &quot;东大街&quot;, &quot;南苑&quot;, &quot;大红门&quot;]]
+    //来源
+    static var HouseSource = [&quot;全部来源&quot;, &quot;房天下&quot;, &quot;便民网&quot;, &quot;列表网&quot;, &quot;城际分类&quot;, &quot;58同城&quot;, &quot;赶集&quot;, &quot;安居客&quot;]
+}
+
+private var menuView: DropMenuView!
+
+override func viewDidLoad() {
+    super.viewDidLoad()
+    view.backgroundColor = UIColor.white
+
+    menuView = DropMenuView(menuOrigin: CGPoint(x: 0, y: 30), menuHeight: 50)
+    menuView.dataSource = self
+    menuView.delegate = self
+    view.addSubview(menuView)
+}
+}
+
+extension ViewController: DropMenuViewDelegate {
+    func menu(_ menu: DropMenuView, didSelectRowAtIndexPath index: DropMenuView.Index) {
+        print(index.column, index.row, index.item)
+    }
+}
+
+extension ViewController: DropMenuViewDataSource {
+    func numberOfColumns(in menu: DropMenuView) -&gt; Int {
+        return DropMenuData.TitleDatas.count
+    }
+
+func menu(_ menu: DropMenuView, numberOfRowsInColumn column: Int) -&gt; Int {
+    if column == 0 {
+        return DropMenuData.HouseType.count
+    } else if column == 1 {
+        return DropMenuData.HouseArea.count
+    } else if column == 2 {
+        return DropMenuData.HouseSource.count
+    }
+    return 0
+}
+
+func menu(_ menu: DropMenuView, titleForRowsInIndePath index: DropMenuView.Index) -&gt; String {
+    switch index.column {
+    case 0:
+        return DropMenuData.TitleDatas[index.row]
+    case 1:
+        return Array(DropMenuData.HouseArea.keys)[index.row]
+    case 2:
+        return DropMenuData.HouseSource[index.row]
+    default:
+        return &quot;&quot;
+    }
+}
+
+func menu(_ menu: DropMenuView, numberOfItemsInRow row: Int, inColumn: Int) -&gt; Int {
+    if inColumn == 1 {
+        return Array(DropMenuData.HouseArea.values)[row].count
+    }
+    return 0
+}
+
+func menu(_ menu: DropMenuView, titleForItemInIndexPath indexPath: DropMenuView.Index) -&gt; String {
+    if indexPath.column == 1 {
+        return Array(DropMenuData.HouseArea.values)[indexPath.row][indexPath.item]
+    }
+    return &quot;&quot;
+}
+}
+</code></pre>
+        </div>
+        <div class="post-reply">
+            
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTE4Ni81NzUz">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+            
+            
+        </div>
+    </div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
+
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        <!--请您保留作者署名, 主题制作来之不易-->
+        Theme by <a href="http://haojen.github.io/">Haojen Ma</a>
+        <br>
+        Copyright © John Doe 2018
+        <br>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/search_core.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>
